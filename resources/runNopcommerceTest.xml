@@ -3,13 +3,13 @@
   <test name="Run On Firefox">
   <parameter name="browser" value="firefox"/>
     <classes>
-      <class name="javaBasic.Topic_06_Condition_Statement"/>
+      <class name="javaBasic.Topic_07_Switch_Case"/>
     </classes>
   </test> 
   <test name="Run On Chrome">
   <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="javaBasic.Topic_06_Condition_Statement"/>
+      <class name="javaBasic.Topic_07_Switch_Case"/>
     </classes>
   </test> 
 </suite> 
