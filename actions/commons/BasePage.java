@@ -16,6 +16,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
+	public static BasePage getBasePage() {
+		return new BasePage();
+	}
 
 	public void openURL(WebDriver driver, String pageUrl) {
 		driver.get(pageUrl);
@@ -100,15 +103,15 @@ public class BasePage {
 		sleepInSecond(3);
 	}
 
-	public By getByXpath(String xpathLocator) {
+	private By getByXpath(String xpathLocator) {
 		return By.xpath(xpathLocator);
 	}
 
-	public WebElement getWebElement(WebDriver driver, String xpathLocator) {
+	private WebElement getWebElement(WebDriver driver, String xpathLocator) {
 		return driver.findElement(getByXpath(xpathLocator));
 	}
 
-	public List<WebElement> getListElements(WebDriver driver, String xpathLocator) {
+	private List<WebElement> getListElements(WebDriver driver, String xpathLocator) {
 		return driver.findElements(getByXpath(xpathLocator));
 	}
 
