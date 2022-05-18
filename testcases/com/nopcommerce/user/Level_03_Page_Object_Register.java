@@ -17,7 +17,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
-public class Level_03_Page_Object extends BasePage {
+public class Level_03_Page_Object_Register extends BasePage {
 	private WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	private String firstName, lastName, email, pass;
