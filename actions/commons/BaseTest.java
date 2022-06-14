@@ -1,5 +1,8 @@
 package commons;
 
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -16,7 +19,8 @@ public class BaseTest {
 
 	protected WebDriver getBrowser(String browserName) {
 		if (browserName.equals("firefox")) {
-			// System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
+			// System.setProperty("webdriver.gecko.driver", projectPath +
+			// "\\browserDrivers\\geckodriver.exe");
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 		} else if (browserName.equals("h_firefox")) {
@@ -41,7 +45,15 @@ public class BaseTest {
 		} else {
 			throw new RuntimeException("Browser name Invalid");
 		}
+
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.get("https://demo.nopcommerce.com/");
 		return driver;
+	}
+
+	protected int ranDom() {
+		Random rand = new Random();
+		return rand.nextInt(9999);
 	}
 
 }

@@ -20,7 +20,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
-public class Level_05_Page_Factory extends BaseTest {
+public class Level_06_Page_Generator__Manager_I extends BaseTest {
 	private WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	private String firstName, lastName, invalidEmail, notFoundEmail, existingEmail, validPass, invalidPass;
@@ -32,7 +32,7 @@ public class Level_05_Page_Factory extends BaseTest {
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowser(browserName);
-		
+		driver.get("https://demo.nopcommerce.com/");
 		homePage = new HomePageObject(driver);
 
 		firstName = "test";
@@ -136,10 +136,6 @@ public class Level_05_Page_Factory extends BaseTest {
 
 	}
 
-	public int ranDom() {
-		Random rand = new Random();
-		return rand.nextInt(9999);
-	}
 
 	@AfterClass
 	public void afterClass() {
