@@ -6,6 +6,7 @@ import commons.BasePage;
 import commons.BaseTest;
 import pageObjects.HomePageObject;
 import pageObjects.LoginPageObject;
+import pageObjects.CustomerInforPageObject;
 import pageObjects.PageGeneratorManager;
 import pageObjects.RegisterPageObject;
 
@@ -28,6 +29,7 @@ public class Level_06_Page_Generator__Manager_III extends BaseTest {
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
 	private LoginPageObject loginPage;
+	private CustomerInforPageObject myAccountPage;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -124,6 +126,8 @@ public class Level_06_Page_Generator__Manager_III extends BaseTest {
 		homePage = loginPage.clickLoginButton();
 
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
+
+		myAccountPage = homePage.clickMyAccountLink();
 
 	}
 
