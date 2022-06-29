@@ -4,8 +4,8 @@ import org.testng.annotations.Test;
 
 import commons.BasePage;
 import commons.BaseTest;
-import pageObjects.HomePageObject;
-import pageObjects.RegisterPageObject;
+import pageObjects.nopCommerce.user.UserHomePageObject;
+import pageObjects.nopCommerce.user.UserRegisterPageObject;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -24,8 +24,8 @@ import org.testng.annotations.AfterClass;
 public class Level_04_Multiple_Browser extends BaseTest {
 	private WebDriver driver;
 	private String firstName, lastName, email, pass;
-	HomePageObject homePage;
-	RegisterPageObject registerPage;
+	UserHomePageObject homePage;
+	UserRegisterPageObject registerPage;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -40,8 +40,8 @@ public class Level_04_Multiple_Browser extends BaseTest {
 		email = "Abc" + ranDom() + "@gmail.com";
 		pass = "Abc@12345";
 
-		homePage = new HomePageObject(driver);
-		registerPage = new RegisterPageObject(driver);
+		homePage = new UserHomePageObject(driver);
+		registerPage = new UserRegisterPageObject(driver);
 
 	}
 
