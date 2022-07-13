@@ -37,7 +37,7 @@ public class Level_08_Switch_Role extends BaseTest {
 
 		userHomePage = PageGeneratorManager.getUserHomePageObject(driver);
 
-		userEmailAddress = "Abc3182@gmail.com";
+		userEmailAddress = "test123@gmail.com";
 		userPassWord = "123456";
 		adminEmailAdress = "admin@yourstore.com";
 		adminPassword = "admin";
@@ -57,8 +57,15 @@ public class Level_08_Switch_Role extends BaseTest {
 		adminLoginPagae = PageGeneratorManager.getAdminLoginPage(driver);
 		adminDashBoardPage = adminLoginPagae.loginAsAdmin(adminEmailAdress, adminPassword);
 		Assert.assertTrue(adminDashBoardPage.isDashBoardHeaderDisplay());
-		// adminLoginPagae = adminDashBoardPage.clickToLogoutLinkAtAdmin(driver);
-		// Check lại nguyên nhân sai hay do mạng
+		adminLoginPagae = adminDashBoardPage.clickToLogoutLinkAtAdmin(driver);
+	}
+	public void sleepInSecond(long timeOutInSecond) {
+		try {
+			Thread.sleep(timeOutInSecond * 1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Test
