@@ -3,11 +3,10 @@ package commons;
 import java.util.List;
 import java.util.Set;
 
-import javax.management.RuntimeErrorException;
-
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -153,7 +152,7 @@ public class BasePage {
 		return driver.findElement(getByLocator(locatorType));
 	}
 
-	private List<WebElement> getListElements(WebDriver driver, String locatorType) {
+	protected List<WebElement> getListElements(WebDriver driver, String locatorType) {
 		return driver.findElements(getByLocator(locatorType));
 	}
 
@@ -162,8 +161,8 @@ public class BasePage {
 	}
 
 	public void clickToElement(WebDriver driver, String locatorType, String... values) {
-		locatorType=getDynamicLocator(locatorType, values);
-		getWebElement(driver,locatorType).click();
+		locatorType = getDynamicLocator(locatorType, values);
+		getWebElement(driver, locatorType).click();
 	}
 
 	public void sendKeyToElement(WebDriver driver, String locatorType, String textValue) {
@@ -311,6 +310,16 @@ public class BasePage {
 	public void hoverMouseToElement(WebDriver driver, String locatorType) {
 		Actions action = new Actions(driver);
 		action.moveToElement(getWebElement(driver, locatorType)).perform();
+	}
+
+	public void pressKeyToElement(WebDriver driver, String locatorType, Keys key) {
+		Actions action = new Actions(driver);
+		action.sendKeys(getWebElement(driver, locatorType), key).perform();
+	}
+
+	public void pressKeyToElement(WebDriver driver, String locatorType, Keys key, String... dynamicValues) {
+		Actions action = new Actions(driver);
+		action.sendKeys(getWebElement(driver, getDynamicLocator(locatorType, dynamicValues)), key).perform();
 	}
 
 	public void scrollToBottomPage(WebDriver driver) {
@@ -469,10 +478,10 @@ public class BasePage {
 
 	public BasePage openPageAtMyAccountByName(WebDriver driver, String pageName) {
 		waitForElementVisible(driver, BasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_PAGE_AREA, pageName);
-		clickToElement(driver,  BasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_PAGE_AREA, pageName);
+		clickToElement(driver, BasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_PAGE_AREA, pageName);
 		switch (pageName) {
 		case "Customer info":
-			 return PageGeneratorManager.getUserCustometInforPage(driver);
+			return PageGeneratorManager.getUserCustometInforPage(driver);
 		case "Addresses":
 			return PageGeneratorManager.getUserAddressPage(driver);
 		case "Reward points":
@@ -483,6 +492,11 @@ public class BasePage {
 		default:
 			throw new RuntimeException("Invalid page name at My Account area ");
 		}
+	}
+
+	public void openPageAtMyAccountByPageName(WebDriver driver, String pageName) {
+		waitForElementVisible(driver, BasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_PAGE_AREA, pageName);
+		clickToElement(driver, BasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_PAGE_AREA, pageName);
 	}
 
 	public UserHomePageObject clickToLogoutLinkAtUser(WebDriver driver) {
@@ -506,7 +520,7 @@ public class BasePage {
 		}
 	}
 
-	private long longTimeOut = 40;
-	private long shortTimeout = 5;
+	private long longTimeOut = GlobalConstants.LONG_TIME_OUT;
+	private long shortTimeout = GlobalConstants.SORT_TIME_OUT;
 
 }

@@ -70,25 +70,33 @@ public class Level_09_Dynamic_Locator extends BaseTest {
 		Assert.assertTrue(customerInforPage.isCustomerInforDisplay());
 	}
 
-	@Test
-	public void User_03_Switch_Page() {
-		addressPage =(UserAddressPageObject) customerInforPage.openPageAtMyAccountByName(driver, "Addresses");
-		myProductPage = (UserMyProductReviewPageObject) addressPage.openPageAtMyAccountByName(driver, "My product reviews");
-		rewardPointPage = (UserRewardPointPageObject) myProductPage.openPageAtMyAccountByName(driver, "Reward points");
-		customerInforPage = (UserCustomerInforPageObject) rewardPointPage.openPageAtMyAccountByName(driver, "Customer info");
-
-	}
 
 
 	@Test
-	public void User_02_Dynamic_Page() {
+	public void User_02_Switch_Page() {
 		addressPage = customerInforPage.openAddressPage(driver);
 		myProductPage = addressPage.openMyProductReview(driver);
 		rewardPointPage = myProductPage.openRewardPointPage(driver);
 		customerInforPage = rewardPointPage.openCustomerInforPage(driver);
 
 	}
+	@Test
+	public void User_03_Dynamic_Page_01() {
+		addressPage =(UserAddressPageObject) customerInforPage.openPageAtMyAccountByName(driver, "Addresses");
+		myProductPage = (UserMyProductReviewPageObject) addressPage.openPageAtMyAccountByName(driver, "My product reviews");
+		rewardPointPage = (UserRewardPointPageObject) myProductPage.openPageAtMyAccountByName(driver, "Reward points");
+		customerInforPage = (UserCustomerInforPageObject) rewardPointPage.openPageAtMyAccountByName(driver, "Customer info");
 
+	}
+	@Test
+	public void User_03_Dynamic_Page_02() {
+		customerInforPage.openPageAtMyAccountByPageName(driver, "My product reviews");
+		myProductPage=PageGeneratorManager.getUserMyProductReviewPage(driver);
+		myProductPage.openPageAtMyAccountByName(driver, "Reward points");
+		rewardPointPage=PageGeneratorManager.getUserRewardPointPage(driver);
+		rewardPointPage.openPageAtMyAccountByName(driver, "Customer info");
+		customerInforPage= PageGeneratorManager.getUserCustometInforPage(driver);
+	}
 
 	@AfterClass
 	public void afterClass() {
