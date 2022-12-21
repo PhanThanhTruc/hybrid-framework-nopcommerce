@@ -179,13 +179,13 @@ public class BasePage {
 
 	public void selectItemInDefaultDropDownn(WebDriver driver, String locatorType, String valueText) {
 		Select select = new Select(getWebElement(driver, locatorType));
-		select.selectByValue(valueText);
+		select.selectByVisibleText(valueText);
 	}
 
 	public void selectItemInDefaultDropDownn(WebDriver driver, String locatorType, String valueText,
 			String... dynamicValues) {
 		Select select = new Select(getWebElement(driver, getDynamicLocator(locatorType, dynamicValues)));
-		select.selectByValue(valueText);
+		select.selectByVisibleText(valueText);
 	}
 
 	public String getFirtSelectItemDefaultDropdown(WebDriver driver, String locatorType) {

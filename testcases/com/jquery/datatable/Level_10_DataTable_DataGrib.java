@@ -27,7 +27,7 @@ public class Level_10_DataTable_DataGrib extends BaseTest {
 		homePage = PageGeneratorManager.getHomePage(driver);
 	}
 
-	@Test
+
 	public void Table_01_Paging() {
 		homePage.openPagingByNumber("10");
 		homePage.sleepInSecond(1);
@@ -47,7 +47,7 @@ public class Level_10_DataTable_DataGrib extends BaseTest {
 
 	}
 
-	@Test
+	
 	public void Table_02_Enter_To_Header() {
 		homePage.refreshToPage(driver);
 
@@ -65,9 +65,57 @@ public class Level_10_DataTable_DataGrib extends BaseTest {
 
 		homePage.sleepInSecond(3);
 	}
-	@Test
+
 	public void Table_03_Enter_To_Header() {
 		allCountryValues=homePage.getValueEachRowAtAllPage();
+	}
+	@Test
+	public void TC_04_Enter_To_Textbox_At_Any_Row() {
+		homePage.clickToLoadButton();
+		homePage.sleepInSecond(5);
+		
+		
+//		homePage.enterToTextboxByColumNameAtRowNumber("Album","2","Test 1");
+//		homePage.sleepInSecond(3);
+//		homePage.enterToTextboxByColumNameAtRowNumber("Artist","4","Test 2");
+//		homePage.sleepInSecond(3);
+//		homePage.enterToTextboxByColumNameAtRowNumber("Year","3","2022");
+//		homePage.sleepInSecond(3);
+//		homePage.enterToTextboxByColumNameAtRowNumber("Price","1","150");
+//		homePage.sleepInSecond(3);
+//		
+//		homePage.selectToDropdownByColumnAtRowNumber("Origin","5","Japan");
+//		homePage.sleepInSecond(3);
+//		
+//		homePage.checkToCheckboxByColumnAtRowNumber("With Poster?","3");
+//		homePage.sleepInSecond(3);
+//		homePage.checkToCheckboxByColumnAtRowNumber("With Poster?","5");
+//		homePage.sleepInSecond(3);
+//		
+//		homePage.uncheckToCheckboxByColumnAtRowNumber("With Poster?","1");
+//		homePage.sleepInSecond(3);
+//		homePage.uncheckToCheckboxByColumnAtRowNumber("With Poster?","2");
+//		homePage.sleepInSecond(3);
+//		homePage.uncheckToCheckboxByColumnAtRowNumber("With Poster?","4");
+//		homePage.sleepInSecond(3);
+		
+		homePage.clickToIconByRowNumber("1","Remove Current Row");
+		homePage.sleepInSecond(3);
+		homePage.clickToIconByRowNumber("1","Insert Row Above");
+		homePage.sleepInSecond(3);
+		homePage.clickToIconByRowNumber("3","Move Up");
+		homePage.sleepInSecond(3);
+		
+		homePage.clickToIconByRowNumber("5","Remove Current Row");
+		homePage.sleepInSecond(3);
+		homePage.clickToIconByRowNumber("4","Remove Current Row");
+		homePage.sleepInSecond(3);
+		homePage.clickToIconByRowNumber("3","Remove Current Row");
+		homePage.sleepInSecond(3);
+		homePage.clickToIconByRowNumber("2","Remove Current Row");
+		homePage.sleepInSecond(3);
+		homePage.clickToIconByRowNumber("1","Remove Current Row");
+		homePage.sleepInSecond(3);
 	}
 
 	@AfterClass
